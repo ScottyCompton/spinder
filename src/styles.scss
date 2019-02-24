@@ -1,8 +1,7 @@
-h1 {
-    color: #27aedb;
-    text-align: center;
-}
-
-h2 {
-    color: #c0c0c0;
+#app {
+    width: 100%;
+    #root {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
