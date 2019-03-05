@@ -1,27 +1,24 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router} from 'react-router-dom';
+import {Row,Col,Container} from 'react-bootstrap';
 import 'normalize.css/normalize.css';
-import './styles.scss';
-import Layout from './components/Layout';
+import Header from './common/Header';
+import Footer from './common/Footer';
 import Routes from './routes';
-
-/*
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faIgloo)
-*/
-
+import styles from './common/_themes/superhero-bootstrap.min.css';
+import './styles.scss';
 
 
 class App extends Component {
     render() {
         return (
             <Router>
-               <Layout >
-                {this.props.children}
-               </Layout>
+                
+                <Container className="app nopadding">
+                    <Header />
+                    <Routes />
+                    <Footer />
+                </Container>
             </Router>
         );
     }

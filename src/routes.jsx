@@ -1,14 +1,18 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
-import Home from './views/Home';
-import Shop from './views/Shop';
-import Settings from './views/Settings';
+import HomeContainer from './views/Home';
+import LoginContainer from './views/Login';
+import DemoContainer from './views/Demo';
+import ShopContainer from './views/Shop';
+
+
 
 const Routes = () => (
-    <div>
-        <Route exact={true} path="/" component={Home} />
-        <Route path="/shop" component={Shop} />        
-        <Route path="/settings/" component={Settings} />
+    <div className="app-content">
+        <Route exact={true} path="/" component={HomeContainer} />
+        <Route exact={true} path="/login" component={LoginContainer} />
+        <Route exact={true} path="/demo" component={DemoContainer} />
+        <Route exact={true} path="/shop" component={ShopContainer} />
     </div>
 
 );

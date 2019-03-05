@@ -1,9 +1,11 @@
 import React from 'react';
-import './styles.scss';
+import HomeComponent from './HomeComponent';
 
-class Home extends React.Component {
+class HomeContainer extends React.Component {
   render() {
-    return <h1>Homepage</h1>
+    return (
+      <HomeComponent />
+    );
   }
 }
-export default Home
+export default HomeContainer

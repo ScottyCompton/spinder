@@ -1,7 +1,64 @@
-#app {
-    width: 100%;
-    #root {
+html,
+body {
+    height: 100%;
+}
+
+#root::after {
+    content: "";
+    height: 100%;
+    background-image: url('/public/images/assets/shopping_frenzy.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #000;
+}
+
+#root {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    height: 100%;
+}
+
+#root {
+    .app {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        height: 100%;
+        min-height: 100%;
+        .app-content {
+            flex: 1;
+        }
+    }
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    .title-container {
+        position: relative;
+        width: 100%;
+        float: left;
+        padding: 25px 0;
+    }
+    .content-container {
+        height: 100%;
+        width: 100%;
+        padding: 2%;
+        background-color: #fff;
+        border-radius: 5px;
     }
 }

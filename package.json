@@ -20,6 +20,7 @@
         "html-webpack-plugin": "^3.2.0",
         "mini-css-extract-plugin": "^0.5.0",
         "node-sass": "^4.11.0",
+        "redux-devtools-extension": "^2.13.8",
         "sass-loader": "^7.1.0",
         "style-loader": "^0.23.1",
         "webpack": "^4.29.5",
@@ -30,13 +31,21 @@
         "@fortawesome/fontawesome-svg-core": "^1.2.15",
         "@fortawesome/free-solid-svg-icons": "^5.7.2",
         "@fortawesome/react-fontawesome": "^0.1.4",
+        "axios": "^0.18.0",
         "bootstrap": "^4.3.1",
+        "cross-fetch": "^3.0.1",
         "font-awesome": "^4.7.0",
         "normalize.css": "^8.0.1",
         "npm": "^6.8.0",
         "react": "^16.8.3",
         "react-bootstrap": "^1.0.0-beta.5",
         "react-dom": "^16.8.3",
-        "react-router-dom": "^4.3.1"
+        "react-redux": "^6.0.1",
+        "react-router-dom": "^4.3.1",
+        "redux": "^4.0.1",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.3.0",
+        "reduxsauce": "^1.0.1",
+        "shortid": "^2.2.14"
     }
 }
