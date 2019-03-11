@@ -44,7 +44,8 @@ const loginReducer = (state=INITIAL_STATE, action) => {
         ...state,
         userId: payload.userId,
         displayName: payload.displayName,
-        isLoading: false
+        isLoading: false,
+        password: ''
       }
     }
 

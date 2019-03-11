@@ -6,4 +6,44 @@
         min-width: 175px;
         position: relative;
     }
+    .hdrRight {
+        display: flex;
+        flex-direction: column;
+        .cartContentsLink {
+            color: #fff;
+        }
+        .cartContentsLink:hover {
+            text-decoration: none;
+        }
+        .cartContents {
+            display: flex;
+            flex-direction: row;
+            .cartSummary {
+                display: flex;
+                flex-direction: column;
+                .sumCircles {
+                    display: flex;
+                    .sumCircle {
+                        font-size: 8px;
+                        border-radius: 50%;
+                        height: 13px;
+                        width: 13px;
+                        margin: 1px;
+                        div {
+                            margin: 0 auto;
+                            text-align: center;
+                        }
+                    }
+                }
+                .cartTotal {
+                    font-size: 12px;
+                }
+            }
+            .cartIcon {
+                svg {
+                    float: right;
+                }
+            }
+        }
+    }
 }
