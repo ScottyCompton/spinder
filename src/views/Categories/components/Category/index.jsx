@@ -2,6 +2,8 @@ import React from 'react';
 import {Row,Col,Container, Form, Button} from 'react-bootstrap';
 import './styles.scss';
 import Img from 'react-image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckSquare } from '@fortawesome/free-solid-svg-icons'
 
 class Category extends React.Component {
     constructor(props) {
@@ -37,14 +39,10 @@ class Category extends React.Component {
     }
 
     render() {
-        const isSelected = (baseCat) => {
-            if(this.state.selected) {
-                return baseCat + " selected";
-            }
-            return baseCat;
-        }
+
         return (
             <div className={"category" + ' ' + this.state.hoverState} onClick={this.toggleCat} onMouseOver={this.hover} onMouseOut={this.hoverOff}>
+                <div className={this.state.selected ? "category-checkbox selected" : "category-checkbox"}><FontAwesomeIcon icon={faCheckSquare} size="2x" /></div>
                 <div className={this.state.selected ? "category-img selected" : "category-img"}>
                     <Img src={"/public/images/category/" + this.state.categoryImg} className="img-fluid" />
                 </div>

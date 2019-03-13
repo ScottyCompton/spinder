@@ -15,7 +15,7 @@ const mapStateToProps = state => {
   const mapDispatchToProps = (dispatch) => {
     // all passed in from LoginOperations (operations.js)
     const loadUserCategories = () => dispatch(categoriesOperations.loadUserCategories());
-    const handleCatClick = () => dispatch(categoriesOperations.handleCatClick());
+    const handleCatClick = (categoryId, categoryUserId) => dispatch(categoriesOperations.handleCatClick(categoryId, categoryUserId));
     return {
         loadUserCategories,
         handleCatClick

@@ -12,6 +12,14 @@ const Actions = ({
     },
 
 
+    toggleCat: (userCategory) => {
+        return {
+            type: types.CATS_TOGGLECAT,
+            userCategory: userCategory
+         }
+    },
+    
+
     selectCat: (userCategory) => {
         return {
             type: types.CATS_SELECTCAT,

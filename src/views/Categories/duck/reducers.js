@@ -18,45 +18,24 @@ const categoriesReducer = (state=INITIAL_STATE, action) => {
       break;
     }
 
-    case types.CATS_SELECTCAT: {
-      const { categoryArray} = state;
-      const { userCategory } = action;
-      // set the userId to the user value for the selected categoryId
-      //const categoryId = userCategory.category_id;
-      var idx = 0;
-      for(cat in categoryArray) {
-        if(cat.category_id === userCategory.category_id) {
-          categoryArray[idx].user_id = userCategory.user_id;
-          break;
-        }
-        idx++;
-      }
-
-      return {
-        ...state,
-        categoryArray: categoryArray
-      }
-    }
-
-
-    case types.CATS_UNSELECTCAT: {
+    case types.CATS_TOGGLECAT: {
       const { categoryArray } = state;
       const { userCategory } = action;
       // set the userId = null for the selected categoryId
+      var categoryId = userCategory[0].category_id;
+      var tmpCategoryArray = categoryArray.slice();
 
-      var idx = 0;
-      for(cat in categoryArray) {
-        if(cat.category_id === userCategory.category_id) {
-          categoryArray[idx].user_id = null;
+      for(var i = 0; i < tmpCategoryArray.length; i++) {
+        if(tmpCategoryArray[i].category_id === categoryId) {
+          tmpCategoryArray.splice(i,1,userCategory[0]);
           break;
         }
-        idx++;
       }
 
       return {
         ...state,
-        categoryArray: categoryArray
-      }
+        categoryArray: tmpCategoryArray
+      }     
     }
 
     default: return state;

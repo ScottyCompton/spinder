@@ -5,8 +5,8 @@ import Config from '../../../../config';
 
 
 const loadCategories = Actions.loadCats;
-const selectCat = Actions.selectCat;
-const unSelectCat = Actions.unSelectCat;
+const toggleCat = Actions.toggleCat;
+//const unSelectCat = Actions.unSelectCat;
 
 const localState = JSON.parse(localStorage.getItem('state'));
 const userId = localState != null ? localState.userSession.userId : -1;
@@ -38,16 +38,14 @@ const handleCatClick = (categoryId, categoryUserId) => {
         )
     };
 
-    /*
-    const toDispatch = categoryUserId !== null ? unSelectCat : selectCat;
+    //const toDispatch = categoryUserId !== null ? unSelectCat : selectCat;
     return dispatch => {
         return fetch(Config.API_ROOT + 'usercategories/', params)
         .then(response => response.json())
         .then(json => {
-            dispatch(toDispatch(json));
+            dispatch(toggleCat(json));
         });
     } 
-    */
 
 }
 
