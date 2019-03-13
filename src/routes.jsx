@@ -4,7 +4,8 @@ import HomeContainer from './views/Home';
 import LoginContainer from './views/Login';
 import DemoContainer from './views/Demo';
 import ShopContainer from './views/Shop';
-import { loadState } from './session/localStorage';
+import CategoriesContainer from './views/Categories';
+import { loadState } from './localStorage';
 
 const userSession = loadState();
 const loggedIn = userSession != undefined ?  userSession.userId != '' : false;
@@ -17,6 +18,7 @@ const Routes = () => (
         <Route exact={true} path="/login" component={LoginContainer} />
         <Route exact={true} path="/demo" component={DemoContainer} />
         <Route exact={true} path="/shop" component={ShopContainer} />
+        <Route exact={true} path="/cats" component={CategoriesContainer} />        
     </div>
 
 );

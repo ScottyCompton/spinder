@@ -8,7 +8,8 @@ const TempLinks = () => {
         <Link className="text-success" to="/">Home Page</Link> | 
         <Link className="text-success" to="/login">Login Page</Link> |
         <Link className="text-success" to="/demo">Demo Page</Link> |
-        <Link className="text-success" to="/shop">Shopping Page</Link>
+        <Link className="text-success" to="/shop">Shopping Page</Link> |
+        <Link className="text-success" to="/cats">Categories Page</Link>
     </div>
     );
 }

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
-import {loadState, saveState } from './session/localStorage';
+import {loadState, saveState } from './localStorage';
 
 
 // get the persisted state stored in localStorage

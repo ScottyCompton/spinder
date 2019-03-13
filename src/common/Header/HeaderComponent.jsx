@@ -55,7 +55,7 @@ class HeaderComponent extends React.Component {
                     </div>
                     </Link>
                     <div className="welcomeMsg">
-                        {hdrMsg}
+                        <Link className="accountLink" to="/account">{hdrMsg}</Link>
                     </div>               
                 </div>
               

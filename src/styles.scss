@@ -2,6 +2,7 @@ html,
 body {
     height: 100%;
     background-color: #000;
+    overflow-y: hidden;
 }
 
 #root::after {
@@ -30,6 +31,8 @@ body {
         min-height: 100%;
         .app-content {
             flex: 1;
+            background: rgba(255, 255, 255, 0.15);
+            overflow-x: hidden;
         }
     }
 }
@@ -47,14 +50,12 @@ body {
     .title-container {
         position: relative;
         width: 100%;
-        float: left;
-        padding: 25px 0;
+        text-align: center;
+        padding-top: 25px;
     }
     .content-container {
         height: 100%;
         width: 100%;
         padding: 2%;
-        background-color: #fff;
-        border-radius: 5px;
     }
 }

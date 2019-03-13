@@ -1,47 +1,57 @@
 .app-header {
     width: 100%;
-    border-bottom: 2px solid #fff;
-    .logo {
-        width: 20%;
-        min-width: 175px;
-        position: relative;
-    }
-    .hdrRight {
-        display: flex;
-        flex-direction: column;
-        .cartContentsLink {
-            color: #fff;
+    padding-bottom: 2vh;
+    nav {
+        padding: 4px 0;
+        border-bottom: 2px solid #fff;
+        .logo {
+            width: 20%;
+            min-width: 175px;
+            position: relative;
         }
-        .cartContentsLink:hover {
-            text-decoration: none;
-        }
-        .cartContents {
+        .hdrRight {
             display: flex;
-            flex-direction: row;
-            .cartSummary {
+            flex-direction: column;
+            margin-right: 2vw;
+            .cartContentsLink {
+                color: #fff;
+            }
+            .cartContentsLink:hover {
+                text-decoration: none;
+            }
+            .cartContents {
                 display: flex;
-                flex-direction: column;
-                .sumCircles {
+                flex-direction: row;
+                .cartSummary {
                     display: flex;
-                    .sumCircle {
-                        font-size: 8px;
-                        border-radius: 50%;
-                        height: 13px;
-                        width: 13px;
-                        margin: 1px;
-                        div {
-                            margin: 0 auto;
-                            text-align: center;
+                    flex-direction: column;
+                    .sumCircles {
+                        display: flex;
+                        .sumCircle {
+                            font-size: 8px;
+                            border-radius: 50%;
+                            height: 13px;
+                            width: 13px;
+                            margin: 1px;
+                            div {
+                                margin: 0 auto;
+                                text-align: center;
+                            }
                         }
                     }
+                    .cartTotal {
+                        font-size: 12px;
+                    }
                 }
-                .cartTotal {
-                    font-size: 12px;
+                .cartIcon {
+                    svg {
+                        float: right;
+                    }
                 }
             }
-            .cartIcon {
-                svg {
-                    float: right;
+            .welcomeMsg {
+                .accountLink {
+                    color: #fff;
                 }
             }
         }

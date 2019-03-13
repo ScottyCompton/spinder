@@ -17,6 +17,39 @@
     top: 0;
     left: 0;
     z-index: 10;
+    display: none;
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 100%;
+        left: 0;
+    }
+    to {
+        opacity: 0;
+        left: -300px;
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 100%;
+        left: 0;
+    }
+    to {
+        opacity: 0;
+        left: 300px;
+    }
+}
+
+.exec-slide-left {
+    animation-name: slideLeft;
+    animation-duration: 1.0s;
+}
+
+.exec-slide-right {
+    animation-name: slideRight;
+    animation-duration: 1.0s;
 }
 
 .productContainer {
@@ -26,10 +59,27 @@
         flex-wrap: wrap;
         width: 100%;
         position: relative;
-        .product-image {
+        .product-images {
             width: 100%;
             height: auto;
             margin: 0 auto;
+            .image-gallery {
+                padding: 2vh 0;
+                .image-gallery-slide-wrapper button:focus {
+                    outline: 0;
+                }
+                .image-gallery-bullet {
+                    border: 0px;
+                    background: #efefef;
+                    box-shadow: none;
+                }
+                .image-gallery-bullets .image-gallery-bullets-container {
+                    text-align: right;
+                }
+                .image-gallery-bullets .image-gallery-bullet.active {
+                    background: #4E5D6C;
+                }
+            }
         }
         .product-price {
             padding: 5px;
