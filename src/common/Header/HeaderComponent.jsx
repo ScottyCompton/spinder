@@ -10,8 +10,8 @@ const calcCartTotal = (aryCart) => {
     var total = 0;
     for(var i = 0; i < aryCart.length; i++) {
         if(aryCart[i].toBuy === true) {
-            var price = aryCart[i].price;
-            total += price;
+            var subTotal = aryCart[i].sub_total;
+            total += subTotal;
         }
     }
     return total.toFixed(2);   

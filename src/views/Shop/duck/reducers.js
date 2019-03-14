@@ -1,6 +1,6 @@
 // reducers.js
 import types from './types';
-
+import shortid from 'shortid';
 
 const INITIAL_STATE = {
   cartContents: [],
@@ -22,16 +22,18 @@ const shopReducer = (state=INITIAL_STATE, action) => {
     case types.SHOP_PRODUCTLIKE: {
       const { productDataArray, cartContents } = state;
       const { productData } = action;
-
       const updatedProductArray = productDataArray.slice();
       const updatedCartArray = cartContents.slice();
-
       const productToAddArray = updatedProductArray.splice(0,1);
       const productToAdd = productToAddArray[0]
-      productToAdd.toBuy = false;
-      updatedCartArray.push(productToAdd);
 
+      productToAdd.toBuy = false;
+      productToAdd.qty = 1;
+      productToAdd.cart_item_id = shortid.generate();
+      productToAdd.sub_total = productToAdd.price;      
+      updatedCartArray.push(productToAdd);
       updatedProductArray.push(productData);
+
       return {
         ...state,
         productDataArray: updatedProductArray,
@@ -43,16 +45,18 @@ const shopReducer = (state=INITIAL_STATE, action) => {
     case types.SHOP_PRODUCTBUY: {
       const { productDataArray, cartContents } = state;
       const { productData } = action;
-
       const updatedProductArray = productDataArray.slice();
       const updatedCartArray = cartContents.slice();
-
       const productToAddArray = updatedProductArray.splice(0,1);
-      const productToAdd = productToAddArray[0]
-      productToAdd.toBuy = true;
-      updatedCartArray.push(productToAdd);
+      const productToAdd = productToAddArray[0];
 
+      productToAdd.toBuy = true;
+      productToAdd.qty = 1;
+      productToAdd.cart_item_id = shortid.generate();
+      productToAdd.sub_total = productToAdd.price;
+      updatedCartArray.push(productToAdd);
       updatedProductArray.push(productData);
+
       return {
         ...state,
         productDataArray: updatedProductArray,
@@ -67,6 +71,7 @@ const shopReducer = (state=INITIAL_STATE, action) => {
       const updatedArray = productDataArray.slice();
       updatedArray.shift();
       updatedArray.push(productData);
+      
       return {
         ...state,
         productDataArray: updatedArray

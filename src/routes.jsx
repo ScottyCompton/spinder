@@ -5,6 +5,7 @@ import LoginContainer from './views/Login';
 import DemoContainer from './views/Demo';
 import ShopContainer from './views/Shop';
 import CategoriesContainer from './views/Categories';
+import CartContainer from './views/Cart';
 import { loadState } from './localStorage';
 
 const userSession = loadState();
@@ -19,6 +20,8 @@ const Routes = () => (
         <Route exact={true} path="/demo" component={DemoContainer} />
         <Route exact={true} path="/shop" component={ShopContainer} />
         <Route exact={true} path="/cats" component={CategoriesContainer} />        
+        <Route exact={true} path="/cart" component={CartContainer} />        
+
     </div>
 
 );
