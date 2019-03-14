@@ -59,3 +59,15 @@ body {
         padding: 2%;
     }
 }
+
+@media(max-width:991px) {
+    .nopadding-sm {
+        padding: 0px;
+    }
+}
+
+@media(max-width:768px) {
+    .nopadding-xs {
+        padding: 0px;
+    }
+}

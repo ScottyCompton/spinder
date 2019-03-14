@@ -49,13 +49,12 @@ const cartReducer = (state=INITIAL_STATE, action) => {
 
     case types.CART_UPDATE_ITEMQTY: {
        // update qty for a given cart item
-
       const { cartContents } = state;
-      const { cartItemId, newQty } = action;
+      const { cartItemId, qty } = action;
       const updatedCartContents = cartContents.map((cartItem) => {
-        if(cartItem.cart_item_id = cartItemId) {
-          cartItem.qty = newQty
-          cartItem.sub_total = cartItem.price * newQty;
+        if(cartItem.cart_item_id === cartItemId) {
+          cartItem.qty = qty
+          cartItem.sub_total = cartItem.price * qty;
         }
         return cartItem;
       });
@@ -67,14 +66,18 @@ const cartReducer = (state=INITIAL_STATE, action) => {
     }
 
 
+
     case types.CART_MOVE_ITEM_TO_FAV: {
       const { cartContents } = state;
       // set toBuy=false for the given item, also change the qty = 1
 
       const { cartItemId } = action;
       const updatedCartContents = cartContents.map((cartItem) => {
-        if(cartItem.cart_item_id = cartItemId) {
+        if(cartItem.cart_item_id === cartItemId) {
+          cartItem.qty = 1;
           cartItem.toBuy = false;
+          cartItem.qty = 1;
+          cartItem.sub_total = cartItem.price * cartItem.qty;            
         }
         return cartItem;
       });
@@ -92,8 +95,10 @@ const cartReducer = (state=INITIAL_STATE, action) => {
 
       const { cartItemId } = action;
       const updatedCartContents = cartContents.map((cartItem) => {
-        if(cartItem.cart_item_id = cartItemId) {
+        if(cartItem.cart_item_id === cartItemId) {
           cartItem.toBuy = true;
+          cartItem.qty = 1;
+          cartItem.sub_total = cartItem.price * cartItem.qty;          
         }
         return cartItem;
       });

@@ -20,7 +20,7 @@ class CategoriesComponent extends React.Component {
         return (
             <Container fluid className="categories nopadding">
                 <Row>
-                    <Col xs={12}>
+                    <Col xs={12} lg={10} className="offset-lg-1">
                     <div className="page-container">
                         <div className="title-container">
                             <h4>Pick your favorite categories to contine</h4>

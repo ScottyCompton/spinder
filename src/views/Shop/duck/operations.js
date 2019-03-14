@@ -11,13 +11,13 @@ const doClickPass = Actions.doClickPass;
 const localState = JSON.parse(localStorage.getItem('state'));
 //const userId = 1;
 
-const userId = localState != null ? localState.userSession.userId : -1;
+//const userId = localState != null ? localState.userSession.userId : -1;
 
 
 
 
 const initShop = () => {
-
+    const userId = localStorage.getItem('userId');
         return dispatch => {
             return fetch(Config.API_ROOT + 'multiplerandomproducts/', 
                 {
@@ -55,6 +55,7 @@ const doSlide = (toBuy) => {
 
 
 const handleBtnClick = (toBuy) => {
+    const userId = localStorage.getItem('userId');
     // loads a new single product into state, adds the front product
     // to the cart if toBuy != undefined
     return dispatch => {

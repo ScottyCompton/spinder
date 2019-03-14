@@ -3,8 +3,8 @@ import CartComponent from './CartComponent';
 import { cartOperations } from './duck'; // operations.js
 
 const mapStateToProps = state => {
-	// current state properties passed down to LoginComponent (LoginComponent.js)
-  const { cartContents } = state.shop;
+  const { cartContents } = state.shop.cartContents.length != state.cart.cartContents.length ? state.shop : state.cart;
+ 
 	return { cartContents }
 };
   

@@ -40,6 +40,7 @@ const loginReducer = (state=INITIAL_STATE, action) => {
 
     case types.SET_USER_SESSION: {
       const { payload } = action;
+      localStorage.setItem('userId',payload.userId);
       return {
         ...state,
         userId: payload.userId,

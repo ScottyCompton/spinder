@@ -16,6 +16,7 @@ const localState = JSON.parse(localStorage.getItem('state'));
 
 const userId = localState != null ? localState.userSession.userId : -1;
 
+
 const handleClickCheckout = () => {
     return dispatch => {
         dispatch(doCheckout(userId));

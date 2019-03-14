@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   const handleClickToBuy = () => dispatch(shopOperations.handleBtnClick(true));
   const handleClickToPass = () => dispatch(shopOperations.handleBtnClick(null));
   const handleClickToLike = () => dispatch(shopOperations.handleBtnClick(false));
-  const initShop = () => dispatch(shopOperations.initShop());
+  const initShop = (userId) => dispatch(shopOperations.initShop(userId));
   
   return {
     handleClickToLike,

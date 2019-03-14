@@ -22,7 +22,8 @@ class CartItem extends React.Component {
             qty: this.props.cartItemData.qty,
             price: this.props.cartItemData.price.toFixed(2),
             toBuy: this.props.cartItemData.toBuy,
-            subTotal: this.props.cartItemData.sub_total.toFixed(2)
+            subTotal: this.props.cartItemData.sub_total.toFixed(2),
+            smallComponent: false
         }
         this.selectQty = this.selectQty.bind(this);
         this.removeItem = this.removeItem.bind(this);
@@ -30,73 +31,151 @@ class CartItem extends React.Component {
         this.moveItemFromBuy = this.moveItemFromBuy.bind(this);
     }
 
+  loadComponent() {
+      this.setState({
+          smallComponent: window.innerWidth < 768
+      })
+  }
+
+  /**
+   * Add event listener
+   */
+  componentDidMount() {
+    this.loadComponent();
+    window.addEventListener("resize", this.loadComponent.bind(this));
+  }
+
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.loadComponent.bind(this));
+  }
+
     selectQty(e) {
-        const newQty = e.target.value;
-        this.props.evtHandlers.handleSelectNewQuantity(this.props.cartItemId, newQty);
-        //console.log(this.props);
+        const newQty = parseInt(e.target.value);
+        this.props.evtHandlers.handleSelectNewQuantity(this.state.cartItemId, newQty);
     }
 
     removeItem() {
-        //handleClickRemoveItem
+        this.props.evtHandlers.handleClickRemoveItem(this.state.cartItemId);
     }
 
     moveItemToBuy() {
-        //handleClickMoveItemToBuy
+        this.props.evtHandlers.handleClickMoveItemToBuy(this.state.cartItemId);
     }
 
     moveItemFromBuy() {
-        // handleClickMoveItemFromBuy
+        this.props.evtHandlers.handleClickMoveItemFromBuy(this.state.cartItemId);
     }
 
 
     render() {
-        //const { selectedOpt } = this.state;
+
         const selectOpts = [];
         for(var i = 1; i <= 10; i++) {
             selectOpts.push(<option value={i} key={i}>{i}</option>)
         }
-        
-        //console.log(this.state.qty);
-
-        return (
+    
+        const smallSizecomponent = (
+            
+           
             <div className="cart-item">
+            <Container fluid>
+                <Row>
+                    <Col xs={9} className="nopadding-xs">
+                        <div className="cartItemDesc">
+                            <h6>{this.state.productName}</h6>
+                        </div>                    
+                    </Col>
+                    <Col xs={3}>
+                    {this.state.toBuy && 
+                        <h5 className="cartItemSubTotal"><span>${this.state.subTotal}</span></h5>
+                    }
+                    </Col>
+                    <Col xs={2} className="nopadding-sm">
+                        <div className="cartItemImg"><Img src={this.state.productImg} className="img-fluid" /></div>
+                    </Col>
+                    <Col xs={3}><h5 className="cartItemPrice bg-primary"><span>${this.state.price}</span></h5></Col>
+                    <Col xs={4} className="nopadding-xs">
+                    <div className="cartItemQty">
+                        {this.state.toBuy && <Form.Control value={this.state.qty} className="form-control form-control-sm" as="select" onChange={this.selectQty}>
+                        {selectOpts}
+                        </Form.Control>}
+                        </div>                    
+                    </Col>
+                    
+                    <Col xs={3} className="nopadding-xs">
+                        <div className="cartItemOptions">
+                        {this.state.toBuy && 
+                            <button className="cart-item-btn cart-item-notbuy btn btn-secondary" onClick={this.moveItemFromBuy}>
+                                <FontAwesomeIcon icon={faStar} size="1x" />
+                            </button> 
+                        }
+
+                        {!this.state.toBuy && 
+                            <button className="cart-item-btn cart-item-tobuy btn btn-secondary" onClick={this.moveItemToBuy}>
+                                <FontAwesomeIcon icon={faDollarSign} size="1x" />
+                            </button> 
+                        }                                                             
+                            <button className="cart-item-btn cart-item-remove btn btn-secondary" onClick={this.removeItem}>
+                                <FontAwesomeIcon icon={faTimes} size="1x" />
+                            </button> 
+                                       
+                        </div>
+                    </Col>
+                    
+                    
+                </Row>
+            </Container>
+            
+        </div>
+        );
+        
+
+        const stdSizeComponent = (
+            
+                <div className="cart-item">
                 <Container fluid>
                     <Row>
-                        <Col xs={1}>
+                        <Col sm={1} className="nopadding-sm">
                             <div className="cartItemImg"><Img src={this.state.productImg} className="img-fluid" /></div>
                         </Col>
-                        <Col xs={5}>
+                        <Col sm={5}>
                             <div className="cartItemDesc">
                                 <h6>{this.state.productName}</h6>
                                 <span className="text-muted">{this.state.productDesc}</span>
                             </div>
                         </Col>
-                        <Col xs={1} className="nopadding">
-                            <h5 className="cartItemPrice bg-primary">${this.state.price}</h5>
+                        
+                        <Col sm={1} className="nopadding">
+                            <h5 className="cartItemPrice bg-primary"><span>${this.state.price}</span></h5>
                         </Col>
-                        <Col xs={2} className="nopadding">
+                        <Col sm={2} className="nopadding">
                             <div className="cartItemQty">
-                                <Form.Control className="form-control form-control-sm" as="select" onChange={this.selectQty}>
+                              {this.state.toBuy && <Form.Control value={this.state.qty} className="form-control form-control-sm" as="select" onChange={this.selectQty}>
                                 {selectOpts}
-                                </Form.Control>
+                                </Form.Control>}
                             </div>
                         </Col>
-                        <Col xs={1} className="nopadding">
-                            <h5 className="cartItemSubTotal">${this.state.subTotal}</h5>
+                        <Col sm={1} className="nopadding">
+                            {this.state.toBuy && 
+                                <h5 className="cartItemSubTotal"><span>${this.state.subTotal}</span></h5>
+                            }
                         </Col>                     
-                        <Col xs={2}>
+                        <Col sm={2}>
                             <div className="cartItemOptions float-right">
                                 {this.state.toBuy && 
-                                    <button className="cart-item-btn btn btn-secondary" onClick={this.moveItemFromBuy}>
+                                    <button className="cart-item-btn cart-item-notbuy btn btn-secondary" onClick={this.moveItemFromBuy}>
                                         <FontAwesomeIcon icon={faStar} size="1x" />
                                     </button> 
                                 }  
                                 {!this.state.toBuy && 
-                                    <button className="cart-item-btn btn btn-secondary" onClick={this.moveItemToBuy}>
+                                    <button className="cart-item-btn cart-item-tobuy btn btn-secondary" onClick={this.moveItemToBuy}>
                                         <FontAwesomeIcon icon={faDollarSign} size="1x" />
                                     </button> 
                                 }                                                             
-                                    <button className="cart-item-btn btn btn-secondary" onClick={this.removeItem}>
+                                    <button className="cart-item-btn cart-item-remove btn btn-secondary" onClick={this.removeItem}>
                                         <FontAwesomeIcon icon={faTimes} size="1x" />
                                     </button> 
                                                               
@@ -106,6 +185,11 @@ class CartItem extends React.Component {
                 </Container>
                 
             </div>
+            );
+        
+
+        return (
+            this.state.smallComponent ? smallSizecomponent : stdSizeComponent
         );
     }
 }

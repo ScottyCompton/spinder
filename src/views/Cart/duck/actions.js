@@ -4,6 +4,7 @@ import types from './types.js';
 
 const Actions = ({
 
+
     doUpdateQuantity: (cartItemId, qty) => {
         return {
             type: types.CART_UPDATE_ITEMQTY,
