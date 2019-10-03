@@ -1,4 +1,4 @@
-const noStorage = ['categories', 'shop'];
+const noStorage = ['categories'];
 
 export const loadState = () => {
     try {

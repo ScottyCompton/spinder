@@ -4,10 +4,9 @@ import { Container } from 'react-bootstrap';
 import {createBrowserHistory} from 'history';
 import HomeContainer from '../components/HomeContainer';
 import LoginContainer from '../views/Login';
-import DemoContainer from '../views/Demo';
 import Shop from '../components/Shop';
 import CategoriesContainer from '../views/Categories';
-import CartContainer from '../views/Cart';
+import Cart from '../components/Cart';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { loadState } from '../localStorage';
@@ -29,10 +28,9 @@ const AppRouter = (props) => (
                     <Switch location={location}>
                             <Route exact={true} path="/" component={HomeComponentToLoad} />
                             <Route exact={true} path="/login" component={LoginContainer} />
-                            <Route exact={true} path="/demo" component={DemoContainer} />
                             <Route exact={true} path="/shop" component={Shop} />
                             <Route exact={true} path="/cats" component={CategoriesContainer} />        
-                            <Route exact={true} path="/cart" component={CartContainer} />        
+                            <Route exact={true} path="/cart" component={Cart} />        
                     </Switch>
                     </div>
                     <Footer />
