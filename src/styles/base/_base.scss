@@ -1,0 +1,73 @@
+html,
+body {
+    height: 100%;
+    background-color: #000;
+    overflow-y: hidden;
+}
+
+#root::after {
+    content: "";
+    height: 100%;
+    z-index: -1;
+}
+
+#root {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-image: url('/images/assets/spinder_bkg.png');
+}
+
+.container {
+    height: 100%;
+}
+
+#root {
+    .app {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 100%;
+        .app-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.15);
+            overflow-x: hidden;
+        }
+    }
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    .title-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        padding-top: 25px;
+    }
+    .content-container {
+        height: 100%;
+        width: 100%;
+        padding: 2%;
+    }
+}
+
+@media(max-width:991px) {
+    .nopadding-sm {
+        padding: 0px;
+    }
+}
+
+@media(max-width:768px) {
+    .nopadding-xs {
+        padding: 0px;
+    }
+}

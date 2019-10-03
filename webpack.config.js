@@ -1,63 +1,69 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if(process.env.NODE_ENV === 'test') {
+    require('dotenv').config({path: '.env.test'});
+} else if (process.env.NODE_ENV === 'development') {
+    require('dotenv').config({path: '.env.development'});
+}
 
 
-module.exports = {
-  entry: "./src/index.jsx",
-  stats: {
-    warnings: false
-  },
-  output: {
-    path: path.join(__dirname, "/_dist"),
-    filename: "index-bundle.js",
-    publicPath: "/"
-  },
-  devServer: {
-    historyApiFallback: true,
-  },
-  resolve: {
-    extensions: ['.js', '.jsx','.scss']
-  },
-  module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [
-          "style-loader", 
-          "css-loader", 
-          "sass-loader" 
-        ]
-      },   
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"]
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      },
-      {
-        test: /\.(?:png|jpg|svg)$/,
-        loader: 'url-loader',
-        query: {
-          limit: 10000
+module.exports = (env) => {
+    const isProduction = env==='production';
+    const CSSExtract = new ExtractTextPlugin('styles.css');
+
+    return {
+        entry: ['babel-polyfill', './src/app.js'],
+        output: {
+            path: path.join(__dirname,'public','dist'),
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [{
+                loader: 'babel-loader',
+                test: /\.js$/,
+                exclude: /node_modules/
+            }, 
+            {
+                test: /\.s?css$/,
+                use: CSSExtract.extract({
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap:true
+                            }
+                        }
+                    ]
+                })
+            }]
+        },
+        plugins: [
+           CSSExtract,
+           new webpack.DefinePlugin({
+            'process.env.IMG_ASSETS_ROOT': JSON.stringify(process.env.IMG_ASSETS_ROOT),
+            'process.env.IMG_CATEGORY_ROOT': JSON.stringify(process.env.IMG_CATEGORY_ROOT),
+            'process.env.IMG_PRODUCT_ROOT': JSON.stringify(process.env.IMG_PRODUCT_ROOT),
+            'process.env.API_ROOT': JSON.stringify(process.env.API_ROOT),
+            'process.env.SHIP_RATE_PER_LB': JSON.stringify(process.env.SHIP_RATE_PER_LB)      
+           })
+        ],
+        devtool: isProduction ? 'source-map' : 'inline-source-map',
+        devServer: {
+            contentBase: path.join(__dirname,'public'),
+            port: 8080,
+            historyApiFallback: true,
+            publicPath: '/dist/'
         }
-      },     
-      {
-        test: /\.(eot|ttf|otf|woff|svg|woff2)(\?.*)?$/,
-        loader: 'file-loader',
-        options: {
-            limit: 10000,
-            name: '[name].[ext]',
-            outputPath: '/fonts/',   
-            publicPath: '/assets'    
-        }
-      }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
-  ]
+    
+    }
 };

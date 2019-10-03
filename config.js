@@ -1,9 +1,9 @@
 const Config = {
-    IMG_ASSETS_ROOT: "/public/images/assets/",
-    IMG_CATEGORY_ROOT: "/public/images/category/",
-    IMG_PRODUCT_ROOT: "/public/images/product/",
-    API_ROOT: "http://localhost:3300/",
-    SHIP_RATE_PER_LB: 2.5
+    IMG_ASSETS_ROOT: process.env.IMG_ASSETS_ROOT,
+    IMG_CATEGORY_ROOT: process.env.IMG_CATEGORY_ROOT,
+    IMG_PRODUCT_ROOT: process.env.IMG_PRODUCT_ROOT,
+    API_ROOT: process.env.API_ROOT,
+    SHIP_RATE_PER_LB: process.env.SHIP_RATE_PER_LB
 }
 
 export default Config;
