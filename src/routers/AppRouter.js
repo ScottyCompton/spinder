@@ -5,7 +5,7 @@ import {createBrowserHistory} from 'history';
 import HomeContainer from '../components/HomeContainer';
 import LoginContainer from '../views/Login';
 import Shop from '../components/Shop';
-import CategoriesContainer from '../views/Categories';
+import Categories from '../components/Categories';
 import Cart from '../components/Cart';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -29,7 +29,7 @@ const AppRouter = (props) => (
                             <Route exact={true} path="/" component={HomeComponentToLoad} />
                             <Route exact={true} path="/login" component={LoginContainer} />
                             <Route exact={true} path="/shop" component={Shop} />
-                            <Route exact={true} path="/cats" component={CategoriesContainer} />        
+                            <Route exact={true} path="/cats" component={Categories} />        
                             <Route exact={true} path="/cart" component={Cart} />        
                     </Switch>
                     </div>
