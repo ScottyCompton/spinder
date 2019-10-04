@@ -153,8 +153,8 @@ const mapDispatchToProps = (dispatch) => {
         cartItemEventHandlers: {
             handleSelectNewQuantity: (cartItemId, newQty) => dispatch(doUpdateQuantity(cartItemId, newQty)),
             handleClickRemoveItem: (cartItemId) => dispatch(doRemoveItem(cartItemId)),
-            handleClickMoveItemToBuy: (cartItemId) => dispatch(doMoveItemToBuy()),
-            handleClickMoveItemFromBuy: (cartItemId) => dispatch(doMoveItemFromBuy())
+            handleClickMoveItemToBuy: (cartItemId) => dispatch(doMoveItemToBuy(cartItemId)),
+            handleClickMoveItemFromBuy: (cartItemId) => dispatch(doMoveItemFromBuy(cartItemId))
         }
     }
 }

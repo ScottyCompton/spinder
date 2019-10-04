@@ -2,8 +2,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import {loadState, saveState } from '../localStorage';
-import loginReducer from '../reducers/loginReducer';
+import {loadState, saveState } from './localStorage';
 import sessionReducer from '../reducers/sessionReducer';
 import shopReducer from '../reducers/shopReducer';
 import categoriesReducer from '../reducers/categoriesReducer';
@@ -17,7 +16,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const appReducers = combineReducers({
-    login: loginReducer,
     userSession: sessionReducer,
     shop: shopReducer,
     categories: categoriesReducer,

@@ -1,10 +1,10 @@
 // reducers.js
 
-const INITIAL_STATE = {
+const cartReducerInitialState = {
   cartContents: []
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state=cartReducerInitialState, action) => {
 
   switch(action.type) {
 

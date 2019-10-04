@@ -21,7 +21,7 @@ class Shop extends React.Component {
 
     initShop = () => {
             const userId = this.props.userId;
-    
+
                     console.log ( JSON.stringify({"user_id": userId,"product_count": 3}))
                     return fetch(process.env.API_ROOT + 'multiplerandomproducts/', 
                         {

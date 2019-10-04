@@ -15,7 +15,7 @@ class Product extends React.Component {
             productDesc: productData.product_desc,
             productDetails: productData.product_details,
             price: new Number(productData.price).toFixed(2),
-            imgPath: productData.product_images.length === 0 ? "/images/assets/" : "/images/product/",
+            imgPath: productData.product_images.length === 0 ? process.env.IMG_ASSETS_ROOT : process.env.IMG_PRODUCT_ROOT,
             productImages: productData.product_images.length === 0 ? noImgArray : productData.product_images
         }        
     }

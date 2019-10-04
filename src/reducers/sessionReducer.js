@@ -1,18 +1,18 @@
-
-const INITIAL_STATE = {
+const sessionReducerInitialState = {
   displayName: '',
   userId: ''
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state=sessionReducerInitialState, action) => {
   switch(action.type) {
 
     case 'SET_USER_SESSION': {
-      const { payload } = action;
+      
+      const { userId, displayName } = action;
       return {
         ...state,
-        userId: payload.userId,
-        displayName: payload.displayName
+        userId,
+        displayName
       }
     }
 

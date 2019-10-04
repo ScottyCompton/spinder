@@ -1,11 +1,11 @@
 import shortid from 'shortid';
 
-const INITIAL_STATE = {
+const shopReducerInitialState = {
   cartContents: [],
   productDataArray: []
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state = shopReducerInitialState, action) => {
 
   switch(action.type) {
     case 'SHOP_INITSHOP': {

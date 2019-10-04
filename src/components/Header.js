@@ -59,7 +59,7 @@ class Header extends React.Component {
                     </div>
                     </Link>
                     <div className="welcomeMsg">
-                        <Link className="accountLink" to="/account">{hdrMsg}</Link>
+                        <Link className="accountLink" to="/edit-account">{hdrMsg}</Link>
                     </div>               
                 </div>
               

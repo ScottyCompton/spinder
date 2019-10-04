@@ -23,47 +23,43 @@ class CartItem extends React.Component {
             subTotal: this.props.cartItemData.sub_total.toFixed(2),
             smallComponent: false
         }
-        this.selectQty = this.selectQty.bind(this);
-        this.removeItem = this.removeItem.bind(this);
-        this.moveItemToBuy = this.moveItemToBuy.bind(this);
-        this.moveItemFromBuy = this.moveItemFromBuy.bind(this);
     }
 
-  loadComponent() {
-      this.setState({
-          smallComponent: window.innerWidth < 768
-      })
-  }
+//   loadComponent() {
+//       this.setState({
+//           smallComponent: window.innerWidth < 768
+//       })
+//   }
 
-  /**
-   * Add event listener
-   */
-  componentDidMount() {
-    this.loadComponent();
-    window.addEventListener("resize", this.loadComponent.bind(this));
-  }
+//   /**
+//    * Add event listener
+//    */
+//   componentDidMount() {
+//     this.loadComponent();
+//     window.addEventListener("resize", this.loadComponent.bind(this));
+//   }
 
-  /**
-   * Remove event listener
-   */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.loadComponent.bind(this));
-  }
+//   /**
+//    * Remove event listener
+//    */
+//   componentWillUnmount() {
+//     window.removeEventListener("resize", this.loadComponent.bind(this));
+//   }
 
-    selectQty(e) {
+    selectQty = (e) => {
         const newQty = parseInt(e.target.value);
         this.props.evtHandlers.handleSelectNewQuantity(this.state.cartItemId, newQty);
     }
 
-    removeItem() {
+    removeItem = () => {
         this.props.evtHandlers.handleClickRemoveItem(this.state.cartItemId);
     }
 
-    moveItemToBuy() {
+    moveItemToBuy = () => {
         this.props.evtHandlers.handleClickMoveItemToBuy(this.state.cartItemId);
     }
 
-    moveItemFromBuy() {
+    moveItemFromBuy = () => {
         this.props.evtHandlers.handleClickMoveItemFromBuy(this.state.cartItemId);
     }
 

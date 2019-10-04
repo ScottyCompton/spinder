@@ -1,9 +1,9 @@
 
-const INITIAL_STATE = {
+const categoriesReducerInitialState = {
   categoryArray: []
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state=categoriesReducerInitialState, action) => {
 
   switch(action.type) {
     case 'CATS_LOADCATS': {
