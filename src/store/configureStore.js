@@ -27,7 +27,7 @@ export default () => {
     // Redux store creation
 
     const store = createStore(appReducers, persistedState, composeEnhancers(applyMiddleware(thunk)));
-
+    //const store = createStore(appReducers, composeEnhancers(applyMiddleware(thunk)));
     store.subscribe(() => {
         saveState(store.getState());
     })

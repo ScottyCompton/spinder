@@ -2,7 +2,7 @@ import React from 'react';
 import {Row,Col,Container, Form, Button} from 'react-bootstrap';
 import Img from 'react-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDollarSign, faTimes, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faDollarSign, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import {FormControl} from 'react-bootstrap';
 
 
@@ -103,7 +103,7 @@ class CartItem extends React.Component {
                         <div className="cartItemOptions">
                         {this.state.toBuy && 
                             <button className="cart-item-btn cart-item-notbuy btn btn-secondary" onClick={this.moveItemFromBuy}>
-                                <FontAwesomeIcon icon={faStar} size="1x" />
+                                <FontAwesomeIcon icon={faThumbsUp} size="1x" />
                             </button> 
                         }
 
@@ -113,7 +113,7 @@ class CartItem extends React.Component {
                             </button> 
                         }                                                             
                             <button className="cart-item-btn cart-item-remove btn btn-secondary" onClick={this.removeItem}>
-                                <FontAwesomeIcon icon={faTimes} size="1x" />
+                                <FontAwesomeIcon icon={faThumbsDown} size="1x" />
                             </button> 
                                        
                         </div>
@@ -161,7 +161,7 @@ class CartItem extends React.Component {
                             <div className="cartItemOptions float-right">
                                 {this.state.toBuy && 
                                     <button className="cart-item-btn cart-item-notbuy btn btn-secondary" onClick={this.moveItemFromBuy}>
-                                        <FontAwesomeIcon icon={faStar} size="1x" />
+                                        <FontAwesomeIcon icon={faThumbsUp} size="1x" />
                                     </button> 
                                 }  
                                 {!this.state.toBuy && 
@@ -170,7 +170,7 @@ class CartItem extends React.Component {
                                     </button> 
                                 }                                                             
                                     <button className="cart-item-btn cart-item-remove btn btn-secondary" onClick={this.removeItem}>
-                                        <FontAwesomeIcon icon={faTimes} size="1x" />
+                                        <FontAwesomeIcon icon={faThumbsDown} size="1x" />
                                     </button> 
                                                               
                             </div>

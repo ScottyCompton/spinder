@@ -30,6 +30,9 @@ class Cart extends React.Component {
 
 
     render() {
+        /* TODO ***
+        This value should be stored in the database somewhere...
+        **********/
         const _HARDCODED_TAX_RATE = 0.07875;
 
         const cartItemsToBuy = this.props.cartContents.filter((cartItem) => {

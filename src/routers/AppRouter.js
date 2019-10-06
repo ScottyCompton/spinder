@@ -7,36 +7,39 @@ import Login from '../components/Login';
 import Shop from '../components/Shop';
 import Categories from '../components/Categories';
 import Cart from '../components/Cart';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import CreateAccount from '../components/CreateAccount';
 import EditAccount from '../components/EditAccount';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import GuestRoute from './GuestRoute';
+import StandardRoute from './StandardRoute';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+export const history = createBrowserHistory();
 
 const AppRouter = (props) => {
-    
-    const history = createBrowserHistory();
 
     return (
         <Router history={history} >
             <Route render={({location}) => {
-                return (
-                    <Container className="app nopadding">
-                        <Header />                
-                        <div className="app-content">
+                return (                       
+                    <TransitionGroup className="RTG">
+                    <CSSTransition 
+                        key={location.key}
+                        timeout={1000}
+                        classNames="fade"
+                    >                                                        
+                        <div className="page app-content">
                             <Switch location={location}>
-                                <GuestRoute exact={true} path="/" component={HomeContainer} />
-                                <GuestRoute exact={true} path="/login" component={Login} />
-                                <GuestRoute path="/create-account" component={CreateAccount} />
-                                <AuthenticatedRoute path="/edit-account" component={EditAccount} />
-                                <AuthenticatedRoute exact={true} path="/shop" component={Shop} />
-                                <AuthenticatedRoute exact={true} path="/cats" component={Categories} />        
-                                <AuthenticatedRoute exact={true} path="/cart" component={Cart} />        
+                                <StandardRoute exact={true} path="/" component={HomeContainer} />
+                                <StandardRoute exact={true} path="/login" component={Login} altComponent={Shop} />
+                                <StandardRoute path="/create-account" component={CreateAccount} />
+                                <StandardRoute path="/edit-account" component={EditAccount} />
+                                <StandardRoute exact={true} path="/shop" component={Shop} />
+                                <StandardRoute exact={true} path="/cats" component={Categories} />        
+                                <StandardRoute exact={true} path="/cart" component={Cart} />        
                             </Switch>
-                        </div>
-                        <Footer />
-                    </Container>
+                        </div>   
+                        </CSSTransition>
+                        </TransitionGroup>                                                    
                 )}}
             >
             </Route>

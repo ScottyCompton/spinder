@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Row,Col,Container, Form, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import TempLinks from './TempLinks'; // just for moving around during dev - remove later
 import { connect } from 'react-redux';
-import { doSetUserSession } from '../actions/user-session';
+import { doLogin, doClearLoginError } from '../actions/user-session';
 import fetch from 'cross-fetch';
+import { history } from '../routers/AppRouter';
 
 
 const Login = (props) => {
 
     const [email, setEmailState] = useState('');
     const [password, setPasswordState] = useState('');
+    const {loginError, loggedIn} = props;
+        
+    useEffect(() => {
+        if(!loggedIn && loginError !== '') {
+            alert('login incorrect');
+            props.doClearLoginError();
+        }        
+    }, [loggedIn, loginError])
+
 
 
     const handleEmailChange = (e) => {
@@ -24,29 +34,7 @@ const Login = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const postData = {
-            email,
-            password
-        };
-
-        const params = {
-            method: 'post',
-            headers: {'Content-Type' : 'application/json'},
-            body: JSON.stringify(postData)
-        }
-
-        return fetch(process.env.API_ROOT + 'validateuser/', params)
-        .then((response) => {
-            return response.json()
-        })
-        .then((json) => {
-            if(json.errors) {
-                alert('Your login was incorrect - ' + json.errors)
-            } else {
-                props.doSetUserSession(json[0]);
-            }
-        });
+        props.doLogin(email, password);
     }
 
 
@@ -80,13 +68,22 @@ const Login = (props) => {
 
 }
 
+
+  const mapStateToPrps = (state, props) => {
+      return {
+          loginError: state.userSession.loginError,
+          loggedIn: state.userSession.userId !== ''
+      }
+  }
+
   const mapDispatchToProps = (dispatch) => {    
     return {
-        doSetUserSession: (res) => dispatch(doSetUserSession(res))
+        doLogin: (email, password) =>{dispatch(doLogin(email, password))},
+        doClearLoginError: () => {dispatch(doClearLoginError())}
     }
   }
   
-  export default connect(undefined, mapDispatchToProps)(Login);
+  export default connect(mapStateToPrps, mapDispatchToProps)(Login);
   
   
   

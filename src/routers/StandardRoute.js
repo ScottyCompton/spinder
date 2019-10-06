@@ -5,32 +5,20 @@ import { Container } from 'react-bootstrap'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-export const GuestRoute = ({ 
+export const StandardRoute = ({ 
     isAuthenticated, 
     component: Component,
-    altComponent: AltComponent,
     ...rest
 }) => (
                            
     <Container className="app nopadding bg-light">
     <Header />         
-    {!isAuthenticated &&
         <Route {...rest} component={(props) => (
                     <Component {...props} />
         )} />
-    }
-
-    {isAuthenticated &&
-        <Route {...rest} component={(props) => (
-                    <AltComponent {...props} component={props.altComponent} />
-        )} />
-    }
     <Footer />
     </Container>
 );
 
-const mapStateToProps = (state) => ({
-    isAuthenticated: state.userSession.userId !== ''
-});
 
-export default connect(mapStateToProps)(GuestRoute);
+export default StandardRoute;

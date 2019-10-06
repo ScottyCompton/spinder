@@ -1,5 +1,7 @@
 const noStorage = ['categories'];
 
+
+
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
@@ -8,6 +10,8 @@ export const loadState = () => {
             return undefined;
         }
         const jsonOut = JSON.parse(serializedState);
+
+
         noStorage.forEach((item) => {
             delete jsonOut[item];
         });
@@ -26,8 +30,8 @@ export const saveState = (state) => {
             noStorage.forEach((item) => {
                 delete serializedState[item];
             });
-
             localStorage.setItem('state', serializedState);
+            
 
 
 

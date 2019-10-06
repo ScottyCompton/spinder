@@ -6,34 +6,36 @@ const categoriesReducerInitialState = {
 export default (state=categoriesReducerInitialState, action) => {
 
   switch(action.type) {
-    case 'CATS_LOADCATS': {
-      const { categoryArray } = action;
+    case 'SHOW_USER_PRODUCT_CATS':
       return {
         ...state,
-        categoryArray: categoryArray
+        userProductCats: action.userProductCats
       }
-      break;
-    }
 
-    case 'CATS_TOGGLECAT': {
-      const { categoryArray } = state;
-      const { userCategory } = action;
-      // set the userId = null for the selected categoryId
-      var categoryId = userCategory[0].category_id;
-      var tmpCategoryArray = categoryArray.slice();
-
-      for(var i = 0; i < tmpCategoryArray.length; i++) {
-        if(tmpCategoryArray[i].category_id === categoryId) {
-          tmpCategoryArray.splice(i,1,userCategory[0]);
-          break;
-        }
+    case 'CATS_LOADCATS': 
+      return {
+        ...state,
+        categoryArray: action.categoryArray
       }
+
+    
+
+    case 'CATS_TOGGLECAT': 
+      //const categoryArray = state.categoryArray;
+      let categoryArray = state.categoryArray.slice();
+      const userCategory = action.userCategory[0];
+
+      const catIdx = categoryArray.findIndex((cat) => {
+        return cat.category_id === userCategory.category_id
+      })
+
+      categoryArray.splice(catIdx,1,userCategory)
 
       return {
         ...state,
-        categoryArray: tmpCategoryArray
+        categoryArray
       }     
-    }
+    
 
     default: return state;
   }

@@ -133,7 +133,25 @@
             padding: 1% 2%;
             line-height: 16px;
             width: 100%;
-            margin: 20px 0;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.shopContainer {
+    .prod-user-cat-list {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        text-align: center;
+        font-size: 15px;
+        position: relative;
+        justify-content: space-evenly;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        div {
+            white-space: nowrap;
+            padding: 1px;
         }
     }
 }

@@ -2,7 +2,8 @@ import shortid from 'shortid';
 
 const shopReducerInitialState = {
   cartContents: [],
-  productDataArray: []
+  productDataArray: [],
+  activeInit: false
 }
 
 export default (state = shopReducerInitialState, action) => {
@@ -16,7 +17,6 @@ export default (state = shopReducerInitialState, action) => {
       }
       break;
     }
-
 
 
     case 'CART_MOVE_ITEM_TO_FAV': {

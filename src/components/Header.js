@@ -43,7 +43,7 @@ class Header extends React.Component {
             <div className="app-header">
 			<Navbar className="bg-primary" expand="xs">
 				<div className="logo">
-					<Link to="/"><Image src="../images/assets/spinder_logo.png" fluid /></Link>
+					<Link to="/shop"><Image src="../images/assets/spinder_logo.png" fluid /></Link>
                 </div>
                 <div className="hdrRight">
                     <Link className="cartContentsLink" to="/cart">

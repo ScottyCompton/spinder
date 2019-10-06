@@ -2,7 +2,10 @@ html,
 body {
     height: 100%;
     //background-color: #000;
-    //overflow-y: hidden;
+}
+
+body {
+    overflow-y: scroll;
 }
 
 #root::after {
@@ -32,9 +35,9 @@ body {
         flex-direction: column;
         height: 100%;
         min-height: 100%;
+        top: 0;
         .app-content {
             flex: 1;
-            background: rgba(255, 255, 255, 0.15);
             overflow-x: hidden;
         }
     }
@@ -72,5 +75,37 @@ body {
 @media(max-width:768px) {
     .nopadding-xs {
         padding: 0px;
+    }
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+    opacity: 1.0;
+    transition: opacity 600ms linear 150ms;
+}
+
+.fade-exit {
+    opacity: 1.0;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 600ms linear;
+    .hide-on-nav {
+        visibility: hidden;
     }
 }
